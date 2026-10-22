@@ -1,0 +1,13 @@
+<header>
+    <h1> {{ storeName() }}</h1>
+
+    <p> {{ cardCount() }}</p>
+
+    <button (click)="addTest()">
+        Agregar producto
+    </button>
+
+    <button (click)="clear()" [disabled]="cardCount() === 0">
+        Limpiar carrito
+    </button>
+</header>
