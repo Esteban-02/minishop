@@ -12,6 +12,7 @@ export class Header {
   storeName = signal('MiniShop');
 
   cartCount = signal (0);
+  protected readonly isEmpty = computed(() => this.cartCount() === 0);
 
   //Texto que se muestra segun la cantidad de productos
   cartLabel = computed(() => {

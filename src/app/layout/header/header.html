@@ -7,7 +7,7 @@
         Agregar producto
     </button>
 
-    <button (click)="clear()" [disabled]="cartLabel() === '0'">
+    <button (click)="clear()" [disabled]="isEmpty()">
         Limpiar carrito
     </button>
 </header>
