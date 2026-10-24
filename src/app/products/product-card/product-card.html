@@ -1,0 +1,18 @@
+<article class="producto-card">
+    <h2>{{ product().title }}</h2>
+
+    <img [src]="product().thumbnail" [alt]="product().title">
+    <p>Categoria: {{ product().category }}</p>
+    <p>Precio: {{ product().price | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} </p>
+    <p>Stock diponible {{ product().stock }}</p>
+
+    @if (lowStock()) {
+        <p class="low-stock">
+            ¡Quedan pocas unidades!
+        </p>
+    }
+
+    <button type="button" (click)="addToCart.emit(product())">
+        Agregar al carrito
+    </button>
+</article>

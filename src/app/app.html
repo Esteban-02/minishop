@@ -1,4 +1,13 @@
-<app-header/>
-  <main>
-    <router-outlet/>
-  </main>
+<app-header />
+<main>
+  <router-outlet />
+
+
+  <section class="products">
+    @for (product of products(); track product.id) {
+    <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
+    }@empty {
+    <p>No hay productos disponibles</p>
+    }
+  </section>
+</main>
