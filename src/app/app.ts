@@ -39,10 +39,10 @@ export class App {
       category: 'Audio',
       rating: 4.2,
       stock: 4,
-    },
+    },  
   ]);
 
-  onAddToCart(product: Product): void {
+  protected onAddToCart(product: Product): void {
     console.log('Producto seleccionado:', product);
   }
 }

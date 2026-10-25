@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    color-scheme: dark; // botones, inputs y scrollbars del navegador en oscuro
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --text: #e6e6e6;
+    --muted: #9a9a9a;
+    --accent: #4f8cff;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+}
