@@ -1,22 +1,24 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { CartStore } from '../../cart/cart-store';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
+  protected readonly cart = inject(CartStore);
 
   //Nombre de la tienda
   storeName = signal('MiniShop');
 
-  cartCount = signal (0);
-  protected readonly isEmpty = computed(() => this.cartCount() === 0);
+  protected readonly isEmpty = computed(() => this.cart.count() === 0);
 
   //Texto que se muestra segun la cantidad de productos
   cartLabel = computed(() => {
-    const cantidad = this.cartCount();
+    const cantidad = this.cart.count();
     return cantidad === 0 
       ? 'Carrito Vacio'
       : cantidad === 1
@@ -24,14 +26,9 @@ export class Header {
         : `${cantidad} productos` ;
   });
 
-  //agregar un producto 
-  addTest(): void {
-    this.cartCount.update(cantidad => cantidad + 1);
-  }
-
   //limpiar carrito
   clear(): void {
-    this.cartCount.set(0);
+    this.cart.clear();
   }
 
 }

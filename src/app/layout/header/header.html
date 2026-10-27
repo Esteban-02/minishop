@@ -3,9 +3,7 @@
 
     <p> {{ cartLabel() }}  </p>
 
-    <button (click)="addTest()">
-        Agregar producto
-    </button>
+    <p> Total {{ cart.total() | currency: 'COP' : 'symbol-narrow' : '1.0-0'}}</p>
 
     <button (click)="clear()" [disabled]="isEmpty()">
         Limpiar carrito
