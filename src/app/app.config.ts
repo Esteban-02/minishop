@@ -4,12 +4,16 @@ import { registerLocaleData } from '@angular/common';
 import localeEsCo from '@angular/common/locales/es-CO';
 
 import { routes } from './app.routes';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 registerLocaleData(localeEsCo);
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withFetch()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    {provide: LOCALE_ID, useValue: 'es-CO'}
+    {provide: LOCALE_ID, 
+      useValue: 'es-CO',
+    }
   ]
 };

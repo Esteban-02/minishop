@@ -12,13 +12,13 @@ export class Header {
   protected readonly cart = inject(CartStore);
 
   //Nombre de la tienda
-  storeName = signal('MiniShop');
+  protected readonly storeName = signal('MiniShop');
 
   protected readonly isEmpty = computed(() => this.cart.count() === 0);
   protected readonly total = this.cart.total;
 
   //Texto que se muestra segun la cantidad de productos
-  cartLabel = computed(() => {
+  protected readonly cartLabel = computed(() => {
     const cantidad = this.cart.count();
     return cantidad === 0 
       ? 'Carrito Vacio'
@@ -28,7 +28,7 @@ export class Header {
   });
 
   //limpiar carrito
-  clear(): void {
+  protected clear(): void {
     this.cart.clear();
   }
 
