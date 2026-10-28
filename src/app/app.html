@@ -2,12 +2,22 @@
 <main>
   <router-outlet />
 
+  <input #q (input)="search.set(q.value)" type="search" placeholder="Buscar ...">
 
   <section class="products">
-    @for (product of products(); track product.id) {
-    <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
-    }@empty {
-    <p>No hay productos disponibles</p>
+
+    @if (productRes.isLoading()) {
+      <p>Cargando Productos...</p>
+    }@else if (productRes.error()) {
+      <p>Ocurrio un error cargando los productos!</p>
+      <button (click)="productRes.reload()">Reintentar</button>
+    }@else {
+      @for (product of products(); track product.id) {
+        <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
+      }@empty {
+        <p>No hay productos disponibles</p>
+      }
     }
+
   </section>
 </main>
